@@ -43,3 +43,4 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+`n### Boot Run ###`nbuild/boot-run*.log`nbuild/boot-run*.err

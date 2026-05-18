@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Posting API</title>
+    <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference@1.25.105"></script>
+    <style>
+        body { margin: 0; }
+    </style>
+</head>
+<body>
+    <script>
+        Scalar.createApiReference('#api-reference', {
+            url: '/openapi.json',
+            darkMode: true
+        })
+    </script>
+    <div id="api-reference"></div>
+</body>
+</html>
