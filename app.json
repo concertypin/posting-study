@@ -1,0 +1,22 @@
+{
+  "name": "posting",
+  "stack": "heroku-24",
+  "description": "Spring Boot + Java 21 기반 게시판",
+  "env": {
+    "JAVA_OPTS": "-Xmx384m -Xss512k",
+    "SPRING_PROFILES_ACTIVE": "production"
+  },
+  "environments": {
+    "review": {
+      "env": {
+        "SPRING_PROFILES_ACTIVE": "preview",
+        "JAVA_OPTS": "-Xmx256m -Xss512k"
+      }
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/java"
+    }
+  ]
+}

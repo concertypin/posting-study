@@ -23,17 +23,12 @@ repositories {
 }
 
 dependencies {
-    // Spring Boot + Web (MVC sync)
     implementation(libs.spring.boot.starter.web)
     implementation(libs.spring.boot.starter.security)
     implementation(libs.spring.boot.starter.thymeleaf)
     implementation(libs.springdoc.openapi)
-
-    // Kotlin (kept for manual kotlin code)
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.reflect)
-
-    // Test
     testImplementation(libs.spring.boot.starter.test)
     testImplementation(libs.spring.security.test)
     testImplementation(libs.kotlin.test)
@@ -41,4 +36,14 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.bootJar {
+    archiveFileName = "posting.jar"
+}
+
+tasks.register<Copy>("stage") {
+    dependsOn(tasks.bootJar)
+    from(tasks.bootJar.flatMap { it.archiveFile })
+    into(layout.buildDirectory.dir("stage"))
 }
