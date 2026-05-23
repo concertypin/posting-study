@@ -1,4 +1,4 @@
-﻿package org.example.repository
+package org.example.repository
 
 import org.example.model.Post
 import org.springframework.stereotype.Repository
@@ -12,18 +12,25 @@ class InMemoryPostRepository : PostRepository {
     private val sequence = AtomicLong(1)
 
     override fun findAll(): List<Post> {
-        TODO("Not yet implemented")
+        return store.values.toList()
     }
 
     override fun findById(id: Long): Post? {
-        TODO("Not yet implemented")
+        if (store.containsKey(id)) {
+            return store[id]
+        }
+        return null
     }
 
     override fun save(post: Post): Post {
-        TODO("Not yet implemented")
+        val id = if (post.id == 0L) sequence.getAndIncrement() else post.id
+        val saved = post.copy(id = id)
+        store.put(id, saved)
+        return saved
     }
 
     override fun deleteById(id: Long): Boolean {
-        TODO("Not yet implemented")
+        val removed = store.remove(id)
+        return removed != null
     }
 }

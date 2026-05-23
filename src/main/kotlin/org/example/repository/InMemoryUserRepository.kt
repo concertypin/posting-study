@@ -1,4 +1,4 @@
-﻿package org.example.repository
+package org.example.repository
 
 import org.example.model.User
 import org.springframework.stereotype.Repository
@@ -11,23 +11,19 @@ class InMemoryUserRepository : UserRepository {
     private val store = ConcurrentHashMap<Long, User>()
     private val sequence = AtomicLong(1)
 
-    override fun findAll(): List<User> {
-        TODO("Not yet implemented")
-    }
+    override fun findAll(): List<User> = store.values.toList()
 
-    override fun findById(id: Long): User? {
-        TODO("Not yet implemented")
-    }
+    override fun findById(id: Long): User? = store[id]
 
-    override fun findByUsername(username: String): User? {
-        TODO("Not yet implemented")
-    }
+    override fun findByUsername(username: String): User? =
+        store.values.find { it.username == username }
 
     override fun save(user: User): User {
-        TODO("Not yet implemented")
+        val id = user.id.takeIf { it != 0L } ?: sequence.getAndIncrement()
+        val saved = user.copy(id = id)
+        store[id] = saved
+        return saved
     }
 
-    override fun deleteById(id: Long): Boolean {
-        TODO("Not yet implemented")
-    }
+    override fun deleteById(id: Long): Boolean = store.remove(id) != null
 }
