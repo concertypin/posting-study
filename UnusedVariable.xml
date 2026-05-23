@@ -1,0 +1,28 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/src/main/kotlin/org/example/service/PostService.kt</file>
+  <line>80</line>
+  <module>posting.main</module>
+  <package>org.example.service</package>
+  <entry_point TYPE="method" FQNAME="org.example.service.PostService void deleteById(long id)" />
+  <problem_class id="UnusedVariable" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Unused variable</problem_class>
+  <description>Unused variable</description>
+  <highlighted_element>post</highlighted_element>
+  <language>kotlin</language>
+  <offset>12</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/src/main/kotlin/org/example/service/UserService.kt</file>
+  <line>42</line>
+  <module>posting.main</module>
+  <package>org.example.service</package>
+  <entry_point TYPE="method" FQNAME="org.example.service.UserService boolean deleteById(long id)" />
+  <problem_class id="UnusedVariable" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Unused variable</problem_class>
+  <description>Unused variable</description>
+  <highlighted_element>existing</highlighted_element>
+  <language>kotlin</language>
+  <offset>12</offset>
+  <length>8</length>
+</problem>
+</problems>

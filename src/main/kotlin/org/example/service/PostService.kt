@@ -77,7 +77,7 @@ class PostService(
     }
 
     fun deleteById(id: Long) {
-        val post = postRepository.findById(id) ?: throw NoSuchElementException("Post not found: $id")
+        postRepository.findById(id) ?: throw NoSuchElementException("Post not found: $id")
         postRepository.deleteById(id)
     }
 }

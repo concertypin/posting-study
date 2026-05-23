@@ -39,7 +39,7 @@ class UserService(
     }
 
     fun deleteById(id: Long): Boolean {
-        val existing = userRepository.findById(id) ?: return false
+        userRepository.findById(id) ?: return false
         return userRepository.deleteById(id)
     }
 

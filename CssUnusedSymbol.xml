@@ -1,0 +1,15 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/src/main/resources/static/admin/index.html</file>
+  <line>14</line>
+  <module>posting.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/src/main/resources/static/admin/index.html" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">Unused selector</problem_class>
+  <hints />
+  <description>Selector danger is never used</description>
+  <highlighted_element>.danger</highlighted_element>
+  <language>CSS</language>
+  <offset>6</offset>
+  <length>7</length>
+</problem>
+</problems>

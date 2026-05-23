@@ -1,0 +1,18 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/src/test/java/org/example/PostingApplicationTests.java</file>
+  <line>10</line>
+  <module>posting.test</module>
+  <package>org.example</package>
+  <entry_point TYPE="method" FQNAME="org.example.PostingApplicationTests void contextLoads()" />
+  <problem_class id="EmptyMethod" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Empty method</problem_class>
+  <hints>
+    <hint value="false" />
+  </hints>
+  <description>The method is empty</description>
+  <highlighted_element>contextLoads</highlighted_element>
+  <language>JAVA</language>
+  <offset>9</offset>
+  <length>12</length>
+</problem>
+</problems>
