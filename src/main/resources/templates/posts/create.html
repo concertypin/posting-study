@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>New Post - Posting</title>
+</head>
+<body>
+    <h1>New Post</h1>
+    <form th:action="@{/posts/create}" method="post">
+        <div>
+            <label>Title: <input type="text" name="title" required style="width:400px"/></label>
+        </div>
+        <div>
+            <label>Content:<br/><textarea name="content" rows="10" cols="60" required></textarea></label>
+        </div>
+        <button type="submit">Create</button>
+    </form>
+    <a th:href="@{/posts}">Back to list</a>
+</body>
+</html>

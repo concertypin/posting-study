@@ -8,6 +8,8 @@ interface PostRepository {
 
     fun findById(id: Long): Post?
 
+    fun findByAuthorId(authorId: Long): List<Post>
+
     fun save(post: Post): Post
 
     fun deleteById(id: Long): Boolean

@@ -24,6 +24,10 @@ class InMemoryPostRepository : PostRepository {
         return null
     }
 
+    override fun findByAuthorId(authorId: Long): List<Post> {
+        return store.values.filter { it.authorId == authorId }.sortedByDescending { it.createdAt }
+    }
+
     override fun save(post: Post): Post {
         val id = if (post.id == 0L) sequence.getAndIncrement() else post.id
         val saved = post.copy(id = id)

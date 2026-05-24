@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -9,12 +9,13 @@
     <p>Spring Boot + Kotlin + Spring Security</p>
     <div th:if="${session.user != null}">
         <p>Hello, <span th:text="${session.user.nickname}">User</span>!</p>
+        <p><a th:href="@{/posts}">View Posts</a></p>
         <form th:action="@{/logout}" method="post" style="display:inline">
             <button type="submit">Logout</button>
         </form>
     </div>
-    <div th:unless="${session.user != null}">
-        <a th:href="@{/login}">Login</a>
+    <div th:if="${session.user == null}">
+        <a th:href="@{/login}">Login</a> | <a th:href="@{/signup}">Sign Up</a>
     </div>
 </body>
 </html>

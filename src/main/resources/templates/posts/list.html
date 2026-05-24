@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts - Posting</title>
+</head>
+<body>
+    <h1>Posts</h1>
+    <a th:href="@{/posts/create}">New Post</a> | <a th:href="@{/}">Home</a>
+    <hr/>
+    <table th:if="">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="post : ">
+                <td th:text="">1</td>
+                <td><a th:href="@{'/posts/' + }" th:text="">title</a></td>
+                <td th:text="">2026-01-01</td>
+            </tr>
+        </tbody>
+    </table>
+    <p th:unless="">No posts yet.</p>
+</body>
+</html>

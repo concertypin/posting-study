@@ -57,6 +57,19 @@ class JdbcPostRepository(
         return results.firstOrNull()
     }
 
+    override fun findByAuthorId(authorId: Long): List<Post> {
+        return jdbc.query("SELECT * FROM posts WHERE author_id = ? ORDER BY created_at DESC", { rs, _ ->
+            Post(
+                id = rs.getLong("id"),
+                title = rs.getString("title"),
+                content = rs.getString("content"),
+                authorId = rs.getLong("author_id"),
+                createdAt = rs.getTimestamp("created_at").toLocalDateTime(),
+                updatedAt = rs.getTimestamp("updated_at").toLocalDateTime()
+            )
+        }, authorId)
+    }
+
     override fun save(post: Post): Post {
         val now = LocalDateTime.now()
         if (post.id == 0L) {

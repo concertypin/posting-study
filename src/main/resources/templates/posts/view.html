@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title th:text=" + ' - Posting'">Post - Posting</title>
+</head>
+<body>
+    <h1 th:text="">Post Title</h1>
+    <p><small>by <span th:text="">author</span> | <span th:text="">date</span></small></p>
+    <hr/>
+    <div th:text="" style="white-space:pre-wrap">content</div>
+    <hr/>
+    <a th:href="@{/posts}">Back to list</a> | <a th:href="@{/}">Home</a>
+</body>
+</html>
