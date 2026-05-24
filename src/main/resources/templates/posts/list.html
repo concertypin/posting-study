@@ -24,6 +24,6 @@
             </tr>
         </tbody>
     </table>
-    <p th:unless="${#lists.isEmpty(posts)}">No posts yet.</p>
+    <p th:if="${#lists.isEmpty(posts)}">No posts yet.</p>
 </body>
 </html>
