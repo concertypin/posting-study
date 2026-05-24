@@ -5,12 +5,14 @@ import org.example.dto.UpdateUserRequest
 import org.example.dto.UserResponse
 import org.example.model.User
 import org.example.repository.UserRepository
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
 @Service
 class UserService(
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val passwordEncoder: PasswordEncoder
 ) {
 
     fun findAll(): List<UserResponse> {
@@ -22,10 +24,15 @@ class UserService(
         return toResponse(user)
     }
 
+    fun findByUsername(username: String): User? {
+        return userRepository.findByUsername(username)
+    }
+
     fun create(request: CreateUserRequest): UserResponse {
         val user = User(
             id = 0L,
             username = request.username,
+            password = passwordEncoder.encode(request.password),
             nickname = request.nickname,
             createdAt = LocalDateTime.now()
         )
@@ -41,6 +48,12 @@ class UserService(
     fun deleteById(id: Long): Boolean {
         userRepository.findById(id) ?: return false
         return userRepository.deleteById(id)
+    }
+
+    fun authenticate(username: String, password: String): UserResponse? {
+        val user = userRepository.findByUsername(username) ?: return null
+        if (!passwordEncoder.matches(password, user.password)) return null
+        return toResponse(user)
     }
 
     private fun toResponse(user: User): UserResponse {

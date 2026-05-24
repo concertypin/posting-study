@@ -4,6 +4,7 @@ import java.time.LocalDateTime
 
 data class CreateUserRequest(
     val username: String,
+    val password: String,
     val nickname: String
 )
 
