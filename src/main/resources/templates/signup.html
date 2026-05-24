@@ -2,22 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Sign Up</title>
 </head>
 <body>
-    <h1>Login</h1>
-    <p th:if="${param.error}" style="color:red">Invalid username or password</p>
-    <form th:action="@{/login}" method="post">
+    <h1>Sign Up</h1>
+    <form th:action="@{/signup}" method="post">
         <div>
             <label>Username: <input type="text" name="username" required/></label>
         </div>
         <div>
             <label>Password: <input type="password" name="password" required/></label>
         </div>
-        <button type="submit">Login</button>
+        <div>
+            <label>Nickname: <input type="text" name="nickname" required/></label>
+        </div>
+        <button type="submit">Sign Up</button>
     </form>
-    <a th:href="@{/signup}">Create an account</a>
-    <br/>
-    <a th:href="@{/}">Back to Home</a>
+    <a th:href="@{/login}">Already have an account? Login</a>
 </body>
 </html>
