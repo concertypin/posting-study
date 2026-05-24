@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
     <h1>Posts</h1>
     <a th:href="@{/posts/create}">New Post</a> | <a th:href="@{/}">Home</a>
     <hr/>
-    <table th:if="">
+    <table th:if="${not #lists.isEmpty(posts)}">
         <thead>
             <tr>
                 <th>ID</th>
@@ -17,13 +17,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="post : ">
-                <td th:text="">1</td>
-                <td><a th:href="@{'/posts/' + }" th:text="">title</a></td>
-                <td th:text="">2026-01-01</td>
+            <tr th:each="post : ${posts}">
+                <td th:text="${post.id}">1</td>
+                <td><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">title</a></td>
+                <td th:text="${post.createdAt.toLocalDate()}">2026-01-01</td>
             </tr>
         </tbody>
     </table>
-    <p th:unless="">No posts yet.</p>
+    <p th:unless="${#lists.isEmpty(posts)}">No posts yet.</p>
 </body>
 </html>
