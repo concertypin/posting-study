@@ -1,11 +1,13 @@
 package org.example.repository
 
 import org.example.model.User
+import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Repository
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicLong
 
 @Repository
+@Profile("!deploy")
 class InMemoryUserRepository : UserRepository {
 
     private val store = ConcurrentHashMap<Long, User>()

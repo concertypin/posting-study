@@ -8,6 +8,11 @@ spring:
     name: posting
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:default}
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration
+      - org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration
 
 server:
   port: ${PORT:8081}
