@@ -1,6 +1,7 @@
 package org.example.repository
 
 import org.example.model.Post
+import java.time.LocalDateTime
 
 interface PostRepository {
 
@@ -13,4 +14,8 @@ interface PostRepository {
     fun save(post: Post): Post
 
     fun deleteById(id: Long): Boolean
+
+    fun findByCursor(cursor: LocalDateTime?, limit: Int): List<Post> {
+        throw UnsupportedOperationException("Cursor-based pagination not implemented")
+    }
 }

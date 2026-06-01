@@ -3,9 +3,11 @@ package org.example.controller
 import org.example.dto.CreatePostRequest
 import org.example.dto.UpdatePostRequest
 import org.example.dto.PostResponse
+import org.example.dto.CursorPageResponse
 import org.example.service.PostService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.time.LocalDateTime
 
 @RestController
 @RequestMapping("/api/posts")
@@ -14,8 +16,11 @@ class PostController(
 ) {
 
     @GetMapping
-    fun list(): List<PostResponse> {
-        return postService.findAll()
+    fun list(
+        @RequestParam(required = false) cursor: LocalDateTime?,
+        @RequestParam(defaultValue = "20") limit: Int
+    ): CursorPageResponse<PostResponse> {
+        return postService.findByCursor(cursor, limit)
     }
 
     @GetMapping("/{id}")

@@ -3,6 +3,7 @@ package org.example.repository
 import org.example.model.Post
 import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Repository
+import java.time.LocalDateTime
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicLong
 
@@ -38,5 +39,12 @@ class InMemoryPostRepository : PostRepository {
     override fun deleteById(id: Long): Boolean {
         val removed = store.remove(id)
         return removed != null
+    }
+
+    override fun findByCursor(cursor: LocalDateTime?, limit: Int): List<Post> {
+        return store.values
+            .sortedByDescending { it.createdAt }
+            .filter { cursor == null || it.createdAt < cursor }
+            .take(limit)
     }
 }
