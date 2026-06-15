@@ -7,5 +7,6 @@ data class User(
     val username: String,
     val password: String,
     val nickname: String,
-    val createdAt: LocalDateTime
+    val createdAt: LocalDateTime,
+    val updatedAt: LocalDateTime = createdAt
 )

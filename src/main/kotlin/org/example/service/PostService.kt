@@ -7,9 +7,11 @@ import org.example.dto.CursorPageResponse
 import org.example.model.Post
 import org.example.repository.PostRepository
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime
 
 @Service
+@Transactional(readOnly = true)
 class PostService(
     private val postRepository: PostRepository
 ) {
@@ -43,6 +45,7 @@ class PostService(
         )
     }
 
+    @Transactional
     fun create(request: CreatePostRequest): PostResponse {
         val post = Post(
             id = 0L,
@@ -63,6 +66,7 @@ class PostService(
         )
     }
 
+    @Transactional
     fun update(id: Long, request: UpdatePostRequest): PostResponse {
         val existing = postRepository.findById(id) ?: throw NoSuchElementException("Post not found: $id")
         val updated = existing.copy(
@@ -81,6 +85,7 @@ class PostService(
         )
     }
 
+    @Transactional
     fun deleteById(id: Long) {
         postRepository.findById(id) ?: throw NoSuchElementException("Post not found: $id")
         postRepository.deleteById(id)
