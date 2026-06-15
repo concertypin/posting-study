@@ -1,18 +1,8 @@
 spring:
   autoconfigure:
     exclude: []
-  flyway:
-    enabled: true
-  jpa:
-    open-in-view: false
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://sm9j2j5q6c8bpgyq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/u7qujnfcordb9zrf?useSSL=false&allowPublicKeyRetrieval=true
     username: czqu24eyrvcpog6m
     password: cvfde6di9n0q4tru
-    hikari:
-      maximum-pool-size: 10
-      minimum-idle: 5
-      idle-timeout: 300000
-      connection-timeout: 5000
-      max-lifetime: 600000

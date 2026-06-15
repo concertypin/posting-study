@@ -7,11 +7,9 @@ import org.example.model.User
 import org.example.repository.UserRepository
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
-import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime
 
 @Service
-@Transactional(readOnly = true)
 class UserService(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder
@@ -30,7 +28,6 @@ class UserService(
         return userRepository.findByUsername(username)
     }
 
-    @Transactional
     fun create(request: CreateUserRequest): UserResponse {
         val user = User(
             id = 0L,
@@ -42,14 +39,12 @@ class UserService(
         return toResponse(userRepository.save(user))
     }
 
-    @Transactional
     fun update(id: Long, request: UpdateUserRequest): UserResponse? {
         val existing = userRepository.findById(id) ?: return null
         val updated = existing.copy(nickname = request.nickname)
         return toResponse(userRepository.save(updated))
     }
 
-    @Transactional
     fun deleteById(id: Long): Boolean {
         userRepository.findById(id) ?: return false
         return userRepository.deleteById(id)

@@ -10,7 +10,7 @@ import kotlin.concurrent.read
 import kotlin.concurrent.write
 
 @Repository
-@Profile("default")
+@Profile("!deploy")
 class InMemoryUserRepository : UserRepository {
 
     private val store = ConcurrentHashMap<Long, User>()
