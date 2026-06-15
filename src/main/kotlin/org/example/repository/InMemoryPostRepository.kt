@@ -11,7 +11,7 @@ import kotlin.concurrent.read
 import kotlin.concurrent.write
 
 @Repository
-@Profile("!deploy")
+@Profile("default")
 class InMemoryPostRepository : PostRepository {
 
     private val store = ConcurrentHashMap<Long, Post>()
@@ -52,3 +52,4 @@ class InMemoryPostRepository : PostRepository {
         }
     }
 }
+

@@ -31,9 +31,12 @@ dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.reflect)
     runtimeOnly("com.mysql:mysql-connector-j")
+    implementation("org.flywaydb:flyway-core")
+    implementation("org.flywaydb:flyway-mysql")
     testImplementation(libs.spring.boot.starter.test)
     testImplementation(libs.spring.security.test)
     testImplementation(libs.kotlin.test)
+    testImplementation("com.h2database:h2")
 }
 
 tasks.test {

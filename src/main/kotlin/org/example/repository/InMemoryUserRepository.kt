@@ -10,7 +10,7 @@ import kotlin.concurrent.read
 import kotlin.concurrent.write
 
 @Repository
-@Profile("!deploy")
+@Profile("default")
 class InMemoryUserRepository : UserRepository {
 
     private val store = ConcurrentHashMap<Long, User>()
@@ -40,3 +40,4 @@ class InMemoryUserRepository : UserRepository {
         return lock.write { store.remove(id) != null }
     }
 }
+
