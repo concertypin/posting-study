@@ -12,7 +12,7 @@
 
 ### 일반 규칙
 
-- 현재 이 프로젝트는 Spring Boot 3.4.4 + JDK 21 + Gradle 8.13 기반입니다.
+- 현재 이 프로젝트는 Spring Boot 3.4.4 + JDK 23 + Gradle 8.13 기반입니다.
 - Kotlin 플러그인이 build.gradle.kts에 포함되어 있으므로 Kotlin/JVM 호환 코드는 컴파일됩니다.
 - 단, `InMemoryPostRepository`, `InMemoryUserRepository`, `UserService` 등의 Kotlin 구현체는 아직 TODO 상태입니다.
 - `PostService`, `PostController`, `UserController` 등 REST API 컨트롤러가 아직 작성되지 않았습니다.

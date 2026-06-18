@@ -1,7 +1,7 @@
 {
   "name": "posting",
   "stack": "heroku-24",
-  "description": "Spring Boot + Java 21 기반 게시판",
+  "description": "Spring Boot + JDK 23 기반 게시판",
   "env": {
     "JAVA_OPTS": "-Xmx384m -Xss512k",
     "SPRING_PROFILES_ACTIVE": "production"
@@ -9,7 +9,7 @@
   "environments": {
     "review": {
       "env": {
-        "SPRING_PROFILES_ACTIVE": "preview",
+        "SPRING_PROFILES_ACTIVE": "preview,default",
         "JAVA_OPTS": "-Xmx256m -Xss512k"
       }
     }
