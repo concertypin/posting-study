@@ -17,14 +17,7 @@ class InMemoryPostRepositoryTest {
     }
 
     private fun createPost(id: Long, createdAt: LocalDateTime): Post {
-        return Post(
-            id = id,
-            title = "title$id",
-            content = "content$id",
-            authorId = 1L,
-            createdAt = createdAt,
-            updatedAt = createdAt
-        )
+        return Post(0L, "title$id", "content$id", 1L, createdAt, createdAt)
     }
 
     @Test
