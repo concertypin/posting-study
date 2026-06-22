@@ -81,7 +81,7 @@ class PostServiceCursorTest {
         override fun findByAuthorId(authorId: Long): List<Post> = store.values.filter { it.authorId == authorId }
         override fun save(post: Post): Post {
             val id = if (post.id == 0L) seq++ else post.id
-            val saved = post.copy(id = id)
+            val saved = Post(id, post.title, post.content, post.authorId, post.createdAt, post.updatedAt)
             store[id] = saved
             return saved
         }

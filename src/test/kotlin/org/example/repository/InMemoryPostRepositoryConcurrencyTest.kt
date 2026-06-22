@@ -26,14 +26,8 @@ class InMemoryPostRepositoryConcurrencyTest {
                 try {
                     repeat(savesPerThread) {
                         val post = repository.save(
-                            Post(
-                                id = 0L,
-                                title = "title",
-                                content = "content",
-                                authorId = 1L,
-                                createdAt = LocalDateTime.now(),
-                                updatedAt = LocalDateTime.now()
-                            )
+                            Post(0L, "title", "content", 1L,
+                                LocalDateTime.now(), LocalDateTime.now())
                         )
                         assertTrue(allIds.add(post.id), "Duplicate ID: ${post.id}")
                     }
@@ -59,14 +53,7 @@ class InMemoryPostRepositoryConcurrencyTest {
         executor.submit {
             try {
                 repeat(1000) {
-                    val post = Post(
-                        id = 0L,
-                        title = "t$it",
-                        content = "c$it",
-                        authorId = 1L,
-                        createdAt = LocalDateTime.now(),
-                        updatedAt = LocalDateTime.now()
-                    )
+                    val post = Post(0L, "t$it", "c$it", 1L, LocalDateTime.now(), LocalDateTime.now())
                     repository.save(post)
                     if (it % 2 == 0) {
                         repository.deleteById(it.toLong())
